@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<html>
+<head>
+    <title>Iniciar sesión</title>
+</head>
+<body>
+    <div>
+        <h3>Iniciar sesión</h3>
+
+        <form action="Usuario/Usuario" method="post">
+            <table>
+                <tr>
+                    <td><label>Correo:</label></td>
+                    <td><input type="text" name="correo" value=" " /></td>
+                </tr>
+                <tr>
+                    <td><label>Contraseña: </label></td>
+                    <td><input type="text" name="contraseña" value=" " /></td>
+                </tr>
+                <tr>
+                    <td><label>Confirmación de contraseña:</label></td>
+                    <td><input type="text" name="confirmcontr" value=" " /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="ingresar" value="Ingresar" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
+
