@@ -2,24 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+using System.ComponentModel.DataAnnotations;
 namespace COMFORTABLE_COOK.Models
 {
     public class Usuario
     {
+        [Display(Name = "Correo")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
         private string correo;
-        private string contraseña;
-        private string confirmcontr;
+        [Display(Name = "Correo electrónico")]
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        private string clave;
+        private int idUsuario;
 
-        public Usuario(string correo, string contraseña, string confirmcontr)
+        public Usuario(string correo, string contraseña)
         {
             this.Correo = correo;
-            this.Contraseña = contraseña;
-            this.Confirmcontr = confirmcontr;
+            this.Clave = clave;
         }
+        public Usuario()
+        {
 
+        }
         public string Correo { get => correo; set => correo = value; }
-        public string Contraseña { get => contraseña; set => contraseña = value; }
-        public string Confirmcontr { get => confirmcontr; set => confirmcontr = value; }
+        public string Clave { get => clave; set => clave = value; }
+        public int IdUsuario { get => idUsuario; set => idUsuario = value; }
     }
 }
+
+
+

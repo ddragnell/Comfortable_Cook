@@ -1,0 +1,40 @@
+﻿@model COMFORTABLE_COOK.Models.Receta
+
+@{
+    ViewBag.Title = "EliminarReceta";
+}
+
+<h2>Eliminar Receta</h2>
+
+<h3>¿Seguro que quieres eliminar esta Receta?</h3>
+<div>
+    <h4>Receta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a Recetas", "Index")
+        </div>
+    }
+</div>

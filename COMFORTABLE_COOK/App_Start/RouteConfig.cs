@@ -18,6 +18,18 @@ namespace COMFORTABLE_COOK
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Usuario",
+                url: "Usuario",
+                defaults: new { controller = "UsuarioController", action = "Registrar" }
+            );
+
+            routes.MapRoute(
+                name: "Recetas",
+                url: "Recetas",
+                defaults: new { controller = "RecetasController", action = "Index" }
+            );
         }
     }
 }

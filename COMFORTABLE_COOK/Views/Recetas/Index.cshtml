@@ -1,0 +1,53 @@
+﻿@model IEnumerable<COMFORTABLE_COOK.Models.Receta>
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .verdata {
+        width: 100%;
+        padding: 3px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 16px;
+    }
+</style>
+
+<h2>Listado de recetas</h2>
+<p class="text-left">
+    @Html.ActionLink("Nueva receta", "CrearReceta")
+</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 col-sm-2">ID</div>
+        <div class="col-md-4 col-sm-4">Nombre</div>
+        <div class="col-md-6 col-sm-6">Acciones</div>
+    </div>
+    <div class="row">
+        @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.IdReceta)
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </div>
+                <div class="col-md-6">
+                    @Html.ActionLink("Ver receta", "VerReceta", "Recetas", new { idReceta = item.IdReceta }, null)|
+                    @Html.ActionLink("Editar", "EditarReceta", "Recetas", new { idReceta = item.IdReceta }, null)|
+                    @Html.ActionLink("Eliminar", "EliminarReceta", "Recetas", new { idReceta = item.IdReceta }, null)|
+                    <a href="">Agregar a favoritos</a>
+                </div>
+             
+            }
+        }
+    </div>
+    
+
+
+</div>
+
+
+

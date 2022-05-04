@@ -1,16 +1,16 @@
 ﻿@model COMFORTABLE_COOK.Models.Usuario
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Registrar";
 }
 <html>
 <head>
-    <title>Ingresar</title>
+    <title>Registrar</title>
 </head>
 <body>
     <div>
-        <h3>Iniciar sesión</h3>
+        <h3>Registrar</h3>
 
-        <form action="Index" method="post">
+        <form action="Registrar" method="post">
             <table>
                 <tr>
                     <td><label>Correo*:</label></td>
@@ -23,13 +23,11 @@
                     @Html.ValidationMessageFor(x => x.Clave, null, new { @class = "text-danger" })
                 </tr>
                 <tr>
-                    
-                    
-                    <td><input type="submit" name="Ingresar" value="Ingresar" /></td>
+                    <td><input type="submit" name="Guardar" value="Guardar" /></td>
                 </tr>
                 <tr>
                     <td style="padding-top: 20px;">
-                        <a href="/Usuario/Registrar">Registrate aquí</a>
+                        <a href="/Usuario/Index">Cancelar</a>
                     </td>
                 </tr>
             </table>
