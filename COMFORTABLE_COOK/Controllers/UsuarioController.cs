@@ -10,11 +10,13 @@ namespace COMFORTABLE_COOK.Controllers
     public class UsuarioController : Controller
     {
         // GET: Usuario
-        // iniciar sesión
+        // COM-11 / Crear un usuario / RF1
         public ActionResult Index()
         {
             return View();
         }
+
+        //COM-13 / Acceder a mi cuenta / RF1
         [HttpPost]
         public ActionResult Index(Usuario user)
         {
@@ -27,7 +29,8 @@ namespace COMFORTABLE_COOK.Controllers
             }
             return View(user);
         }
-        //registrar usuario
+
+        //COM-12 / Crear un usuario / RF2
         public ActionResult Registrar()
         {
             return View();
@@ -39,7 +42,7 @@ namespace COMFORTABLE_COOK.Controllers
             var existeUsuario = bd.GuardarUsuario(user.Correo, user.Clave);
             return View(user);
         }
-        //Cerrar sesión
+        //COM-15 / Cerrar sesión / RF3
         public ActionResult CerrarSesion()
         {
             return Redirect("/Usuario/Index");

@@ -10,23 +10,23 @@ namespace COMFORTABLE_COOK.Controllers
     public class RecetasController : Controller
     {
         BaseDeDatos bd = new BaseDeDatos();
-        public List<Receta>recetas;
-        // GET: Recetas
-        //Listado de recetas
+        public List<Receta> recetas;
+        //COM-14 / Acceder a mi lista de recetas / RF5
         public ActionResult Index()
         {
             var recetas = bd.ConsultarRecetas(Convert.ToInt32(Session["user"]));
 
             return View(recetas);
         }
-        //Ver receta
+
+        //COM-17 / Acceder a mi lista de recetas / RF9
         [HttpGet]
         public ActionResult VerReceta(int idReceta)
         {
             var receta = bd.ConsultarRecetaPorId(idReceta);
             return View(receta);
         }
-        //Crear receta 
+        //COM-16 / Añadir receta / RF6
         [HttpGet]
         public ActionResult CrearReceta() {
             return View();
@@ -41,9 +41,9 @@ namespace COMFORTABLE_COOK.Controllers
                 return Redirect("/Recetas/Index");
             }
             return View(receta);
-
         }
 
+        //COM-19 / Editar receta / RF7
         [HttpGet]
         public ActionResult EditarReceta(int idReceta)
         {
@@ -60,9 +60,9 @@ namespace COMFORTABLE_COOK.Controllers
                 return Redirect("/Recetas/Index");
             }
             return View(receta);
-
         }
 
+        //COM-21 / Borrar receta / RF8
         [HttpGet]
         public ActionResult EliminarReceta(int idReceta)
         {
@@ -79,8 +79,9 @@ namespace COMFORTABLE_COOK.Controllers
                 return RedirectToAction("Index");
             }
             return View(receta);
-
         }
+
+        //COM-22 / Etiquetar receta / RNF1
         [HttpGet]
         public ActionResult Favoritas()
         {
@@ -88,6 +89,8 @@ namespace COMFORTABLE_COOK.Controllers
 
             return View(recetasfav);
         }
+
+        //COM-23 / Etiquetar receta / RNF2
         [HttpGet]
         public ActionResult MarcarFavorita(int idReceta)
         {
@@ -104,8 +107,9 @@ namespace COMFORTABLE_COOK.Controllers
                 return Redirect("/Recetas/Favoritas");
             }
             return View(receta);
-
         }
+
+        //COM-24 / Etiquetar receta / RNF3
         [HttpGet]
         public ActionResult EliminarFavorito(int idReceta)
         {
