@@ -1,11 +1,12 @@
 ﻿@model COMFORTABLE_COOK.Models.Receta
 
 @{
-    ViewBag.Title = "Ver Receta";
+    ViewBag.Title = "EliminarFavorito";
 }
 
-<h2>Ver Receta</h2>
+<h2>Eliminar Receta de favoritas</h2>
 
+<h3>¿Seguro que quieres eliminar esta receta de favoritas?</h3>
 <div>
     <h4>Receta</h4>
     <hr />
@@ -26,9 +27,16 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
 
-
     </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a favoritos", "Favoritas")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Volver a Recetas", "Index")
-</p>
+

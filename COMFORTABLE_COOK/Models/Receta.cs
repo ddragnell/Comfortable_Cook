@@ -16,13 +16,15 @@ namespace COMFORTABLE_COOK.Models
         private string descripcion;
         private int idUsuario;
         private int idReceta;
+        private bool esFavorito;
 
-        public Receta(string nombre, string descripcion, int idUsuario, int idReceta)
+        public Receta(string nombre, string descripcion, int idUsuario, int idReceta, bool esFavorito= false)
         {
             Nombre = nombre;
             Descripcion = descripcion;
             IdUsuario = idUsuario;
             IdReceta = idReceta;
+            EsFavorito = esFavorito;
         }
 
         public Receta() { }
@@ -31,5 +33,6 @@ namespace COMFORTABLE_COOK.Models
         public string Descripcion { get=> descripcion; set => descripcion= value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
         public int IdReceta { get => idReceta; set => idReceta = value; }
+        public bool EsFavorito { get => esFavorito; set => esFavorito = value; }
     }
 }

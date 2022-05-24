@@ -1,11 +1,12 @@
 ﻿@model COMFORTABLE_COOK.Models.Receta
 
 @{
-    ViewBag.Title = "Ver Receta";
+    ViewBag.Title = "MarcarFavorito";
 }
 
-<h2>Ver Receta</h2>
+<h2>Marcar Receta favorita</h2>
 
+<h3>¿Seguro que quieres marcar esta receta como favorita?</h3>
 <div>
     <h4>Receta</h4>
     <hr />
@@ -26,9 +27,15 @@
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
 
-
     </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Marcar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a recetas", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Volver a Recetas", "Index")
-</p>

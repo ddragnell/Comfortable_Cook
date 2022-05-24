@@ -30,6 +30,11 @@ namespace COMFORTABLE_COOK
                 url: "Recetas",
                 defaults: new { controller = "RecetasController", action = "Index" }
             );
+            routes.MapRoute(
+                name: "Favoritas",
+                url: "Recetas",
+                defaults: new { controller = "RecetasController", action = "Favoritas" }
+            );
         }
     }
 }

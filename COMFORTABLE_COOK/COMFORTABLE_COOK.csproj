@@ -181,6 +181,9 @@
     <Content Include="Views\Recetas\VerReceta.cshtml" />
     <Content Include="Views\Recetas\EditarReceta.cshtml" />
     <Content Include="Views\Recetas\EliminarReceta.cshtml" />
+    <Content Include="Views\Recetas\EliminarFavorito.cshtml" />
+    <Content Include="Views\Recetas\Favoritas.cshtml" />
+    <Content Include="Views\Recetas\MarcarFavorita.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

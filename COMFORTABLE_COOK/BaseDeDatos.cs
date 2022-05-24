@@ -159,5 +159,71 @@ namespace COMFORTABLE_COOK
             }
             return null;
         }
+
+        public List<Receta> ConsultarRecetasFavoritas(int idUsuario)
+        {
+            OdbcCommand command = new OdbcCommand($@"SELECT Id, Nombre, Descripcion, Idusuario FROM Recetas WHERE Idusuario={idUsuario} AND esFavorito={true};");
+            List<Receta> recetasfav = new List<Receta>();
+
+            using (OdbcConnection connection = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=C:\\Users\\Andres Felipe\\Documents\\Comfortable_cook.accdb; Uid = Admin; Pwd = 123; "))
+            {
+                command.Connection = connection;
+                connection.Open();
+                var reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    if (!reader.IsDBNull(0))
+                    {
+                        Receta receta = new Receta
+                        {
+                            IdReceta = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Descripcion = reader.GetString(2),
+                            IdUsuario = reader.GetInt32(3)
+                        };
+
+                        recetasfav.Add(receta);
+
+                    }
+                    else
+                    {
+                        return new List<Receta>();
+                    }
+                }
+            }
+            return recetasfav;
+        }
+
+        public bool MarcarFavorito(int idReceta)
+        {
+            OdbcCommand command = new OdbcCommand($@"UPDATE Recetas SET esFavorito={true} WHERE Id={idReceta};");
+
+            using (OdbcConnection connection = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=C:\\Users\\Andres Felipe\\Documents\\Comfortable_cook.accdb; Uid = Admin; Pwd = 123; "))
+            {
+                command.Connection = connection;
+                connection.Open();
+                int result = command.ExecuteNonQuery();
+                connection.Close();
+            }
+            return true;
+        }
+
+        public bool EliminarFavorito(int idReceta)
+        {
+            bool estado= false;
+            OdbcCommand command = new OdbcCommand($@"UPDATE Recetas SET esFavorito={estado} WHERE Id={idReceta};");
+
+            using (OdbcConnection connection = new OdbcConnection("Driver={Microsoft Access Driver (*.mdb, *.accdb)}; Dbq=C:\\Users\\Andres Felipe\\Documents\\Comfortable_cook.accdb; Uid = Admin; Pwd = 123; "))
+            {
+                command.Connection = connection;
+                connection.Open();
+                int result = command.ExecuteNonQuery();
+                connection.Close();
+            }
+            return true;
+        }
+
+
     }
+
 }

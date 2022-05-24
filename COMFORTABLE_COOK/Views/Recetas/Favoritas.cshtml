@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<COMFORTABLE_COOK.Models.Receta>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Favoritas";
 }
 
 <style>
@@ -12,12 +12,9 @@
     }
 </style>
 
-<h2>Listado de recetas</h2>
+<h2>Listado de favoritas</h2>
 <p class="text-left">
-    @Html.ActionLink("Nueva receta", "CrearReceta")
-</p>
-<p class="text-left">
-    @Html.ActionLink("Recetas Favoritas", "Favoritas")
+    @Html.ActionLink("Salir de favoritos", "Index")
 </p>
 
 <div class="container-fluid">
@@ -39,18 +36,15 @@
                 </div>
                 <div class="col-md-6">
                     @Html.ActionLink("Ver receta", "VerReceta", "Recetas", new { idReceta = item.IdReceta }, null)|
-                    @Html.ActionLink("Editar", "EditarReceta", "Recetas", new { idReceta = item.IdReceta }, null)|
-                    @Html.ActionLink("Eliminar", "EliminarReceta", "Recetas", new { idReceta = item.IdReceta }, null)|
-                    @Html.ActionLink("Agregar a favoritas", "MarcarFavorita", "Recetas", new { idReceta = item.IdReceta }, null)|
+                    @Html.ActionLink("Eliminar de favoritos", "EliminarFavorito", "Recetas", new { idReceta = item.IdReceta }, null)|
                 </div>
-             
+
             }
         }
     </div>
-    
+
 
 
 </div>
-
 
 
