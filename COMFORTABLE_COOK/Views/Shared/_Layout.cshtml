@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
@@ -38,6 +38,17 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    <script>
+        $('#record').click(function () {
+            $.get("SpeechToTextAction", {}, function (data) {
+                var i = data.indexOf('Json');
+                var resp = JSON.parse(data.substr(i + 5, data.length));
+                $('#Descripcion').val($('#Descripcion').val() + resp.DisplayText);
+            });
+        });
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using COMFORTABLE_COOK.Models;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
 namespace COMFORTABLE_COOK.Controllers
 {
@@ -41,6 +44,23 @@ namespace COMFORTABLE_COOK.Controllers
                 return Redirect("/Recetas/Index");
             }
             return View(receta);
+        }
+
+        //COM-25 / Crear receta con speech to text / RF10
+        [HttpGet]
+        public async Task<SpeechRecognitionResult> SpeechToTextAction()
+        {
+            //await SpeechToText.SpeechToTextFeature();
+            //var speechconfig = SpeechConfig.FromEndpoint(new Uri("https://eastus2.api.cognitive.microsoft.com/sts/v1.0/issuetoken"), "bbd5357e3c4c4c4997633ae0b463f531");
+            var speechconfig = SpeechConfig.FromSubscription("bbd5357e3c4c4c4997633ae0b463f531", "eastus2");
+            speechconfig.SpeechRecognitionLanguage = "es-MX";
+            using (var audioconfig = AudioConfig.FromDefaultMicrophoneInput())
+            {
+                using (var recognizer = new SpeechRecognizer(speechconfig, audioconfig))
+                {
+                    return await recognizer.RecognizeOnceAsync();
+                }
+            }
         }
 
         //COM-19 / Editar receta / RF7
